@@ -31,6 +31,10 @@ class BrandResource extends Resource
                 ->title('Name')
                 ->placeholder("Name")
                 ->required(),
+            Input::make('slug')
+                ->title('Slug')
+                ->placeholder("Slug")
+                ->required(),
             TextArea::make('description')
                 ->title('Description')
                 ->placeholder("Description"),
@@ -50,6 +54,9 @@ class BrandResource extends Resource
     {
         return [
             TD::make('name'),
+
+            TD::make('slug')
+                ->render(fn($model) => "www.example.com/brands/<b>{$model->slug}</b>"),
 
             TD::make('description')
                 ->render(function($model) {
@@ -72,6 +79,10 @@ class BrandResource extends Resource
     {
         return [
             Sight::make('name'),
+            
+            Sight::make('slug')
+                ->render(fn($model) => "www.example.com/brands/<b>{$model->slug}</b>"),
+
             Sight::make('description')
                 ->render(function($model) {
                     if (!$model->description) {

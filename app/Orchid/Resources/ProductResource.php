@@ -35,6 +35,10 @@ class ProductResource extends Resource
                 ->title('Name')
                 ->placeholder("Name")
                 ->required(),
+            Input::make('slug')
+                ->title('Slug')
+                ->placeholder("Slug")
+                ->required(),
             TextArea::make('description')
                 ->title('Description')
                 ->placeholder("Description"),
@@ -83,10 +87,14 @@ class ProductResource extends Resource
     {
         return [
             TD::make('sku'),
+
             TD::make('name')
                 ->render(function($model) {
                     return Str::words($model->name, '5');
                 }),
+            
+            TD::make('slug')
+                ->render(fn($model) => "www.example.com/products/<b>{$model->slug}</b>"),
 
             TD::make('description')
                 ->render(function($model) {
@@ -133,6 +141,9 @@ class ProductResource extends Resource
     {
         return [
             Sight::make('name'),
+        
+            Sight::make('slug')
+                ->render(fn($model) => "www.example.com/products/<b>{$model->slug}</b>"),
 
             Sight::make('description')
                 ->render(function($model) {

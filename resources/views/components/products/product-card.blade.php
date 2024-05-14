@@ -14,26 +14,27 @@
 
     <x-products.product-image-carousel :product="$product" :imageList="$product->images" />
 
-    <div class="mt-6 flex flex-col gap-3 h-full">
+    <div class="mt-6 flex flex-col justify-normal gap-3 h-full">
         <p class="font-extrabold text-2xl">{{$product->name}}</p>
         <p class="font-light text-sm">{{Str::words($product->description, 12)}}</p>
         <a class="text-amber-600 font-bold" href="#">{{$product->brand->name}}</a>
 
-        @if ($product->discount <= 0)
-            <p><span class="font-extrabold text-2xl">{{$product->price}}</span><span class="font-light te text-zinc-500">$</span></p>
-        @else
-            <div class="w-full">
-                <span class="opacity-60 relative">
-                    <span class="absolute h-[2px] w-full bg-red-700 top-2"></span>
-                    <span class="font-extrabold text-xl">{{$product->price}}</span>
-                    <span class="font-light te text-zinc-500">$</span>
-                </span>
-                <span class="ml-3 font-extrabold text-2xl">{{$product->priceWithDiscount()}}</span><span class="font-light te text-zinc-500">$</span>
-            </div>
-        @endif
-
-        <a class="cursor-pointer mt-auto text-center text-zinc-200 bg-zinc-800 hover:bg-zinc-700 py-4 transition-colors">See Item</a>
-
+        <div class="mt-auto flex flex-col">
+            @if ($product->discount <= 0)
+                <p class="mb-5"><span class="font-extrabold text-2xl mt-auto">{{$product->price}}</span><span class="font-light te text-zinc-500">$</span></p>
+            @else
+                <div class="w-full mt-auto mb-5">
+                    <span class="opacity-60 relative">
+                        <span class="absolute h-[2px] w-full bg-red-700 top-2"></span>
+                        <span class="font-extrabold text-xl">{{$product->price}}</span>
+                        <span class="font-light te text-zinc-500">$</span>
+                    </span>
+                    <span class="ml-3 font-extrabold text-2xl">{{$product->priceWithDiscount()}}</span><span class="font-light te text-zinc-500">$</span>
+                </div>
+            @endif
+            <a class="cursor-pointer mt-auto text-center text-zinc-200 bg-zinc-800 hover:bg-zinc-700 py-4 transition-colors">See Item</a>
+        </div>
+       
     </div>
 
 </div>
