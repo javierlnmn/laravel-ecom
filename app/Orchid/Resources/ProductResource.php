@@ -35,10 +35,6 @@ class ProductResource extends Resource
                 ->title('Name')
                 ->placeholder("Name")
                 ->required(),
-            Input::make('slug')
-                ->title('Slug')
-                ->placeholder("Slug")
-                ->required(),
             TextArea::make('description')
                 ->title('Description')
                 ->placeholder("Description"),

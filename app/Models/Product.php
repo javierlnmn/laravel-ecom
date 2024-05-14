@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
-    use HasFactory, AsSource, Filterable, Attachable;
+    use HasFactory, AsSource, Filterable, Attachable, Sluggable;
 
     protected $fillable = [
         'sku',
@@ -20,6 +21,20 @@ class Product extends Model
         'price',
         'discount',
     ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
+
+    public static function findBySlug($slug)
+    {
+        return self::where('slug', $slug)->first();
+    }
 
     public function brand()
     {

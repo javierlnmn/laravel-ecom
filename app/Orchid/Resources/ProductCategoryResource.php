@@ -28,16 +28,10 @@ class ProductCategoryResource extends Resource
     public function fields(): array
     {
         return [
-            Group::make([
-                Input::make('name')
-                    ->title('Name')
-                    ->placeholder("Name")
-                    ->required(),
-                Input::make('slug')
-                    ->title('Slug')
-                    ->placeholder("Slug")
-                    ->required(),
-            ]),
+            Input::make('name')
+                ->title('Name')
+                ->placeholder("Name")
+                ->required(),
             Select::make('parent_id')
                 ->required(false)
                 ->fromModel(ProductCategory::class, 'name')

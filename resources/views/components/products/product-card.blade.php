@@ -32,7 +32,7 @@
                     <span class="ml-3 font-extrabold text-2xl">{{$product->priceWithDiscount()}}</span><span class="font-light te text-zinc-500">$</span>
                 </div>
             @endif
-            <a class="cursor-pointer mt-auto text-center text-zinc-200 bg-zinc-800 hover:bg-zinc-700 py-4 transition-colors">See Item</a>
+            <a href="{{route('product.show', ['productSlug' => $product->slug])}}" class="cursor-pointer mt-auto text-center text-zinc-200 bg-zinc-800 hover:bg-zinc-700 py-4 transition-colors">See Item</a>
         </div>
        
     </div>
