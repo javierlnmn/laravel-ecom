@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        view()->composer('includes.footer', function ($view) {
+            // $categories = Category::all();
+            // $view->with('categories', $categories);
+        });
     }
 }

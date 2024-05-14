@@ -51,10 +51,6 @@ class BrandResource extends Resource
         return [
             TD::make('name'),
 
-            // TD::make('description')
-            //     ->render(function($model) {
-            //         return Str::words($model->description, '5');
-            //     }),
             TD::make('description')
                 ->render(function($model) {
                     return Str::words($model->description, '5');
@@ -85,7 +81,7 @@ class BrandResource extends Resource
                 }),
             Sight::make('image')
                 ->render(function($model) {
-                    return "<img width='40px' height='auto' style='object-fit: contain; aspect-ratio: 1;' src='{$model->image}' alt='{$model->name}' />";
+                    return "<img width='200px' height='auto' src='{$model->image}' alt='{$model->name}' />";
                 }),
         ];
     }

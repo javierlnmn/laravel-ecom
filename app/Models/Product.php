@@ -21,9 +21,21 @@ class Product extends Model
         'discount',
     ];
 
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function priceWithDiscount()
+    {
+        if ($this->discount <= 0) return $this->price;
+        $finalPrice = number_format($this->price - ($this->price * $this->discount / 100), 2, '.', ',');
+        return $finalPrice;
     }
 
 }

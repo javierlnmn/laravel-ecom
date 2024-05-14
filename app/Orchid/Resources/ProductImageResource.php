@@ -8,6 +8,7 @@ use Orchid\Crud\Resource;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Sight;
 use Orchid\Screen\TD;
 
 class ProductImageResource extends Resource
@@ -58,6 +59,8 @@ class ProductImageResource extends Resource
                     return $productName;
                 }),
 
+            TD::make('alt'),
+
             TD::make('image')
                 ->render(function($model) {
                     return "<img width='100px' height='auto' style='object-fit: contain; aspect-ratio: 1;' src='{$model->image}' alt='{$model->alt}' />";
@@ -72,7 +75,20 @@ class ProductImageResource extends Resource
      */
     public function legend(): array
     {
-        return [];
+        return [
+            Sight::make('product')
+                ->render(function ($model) {
+                    $productName = Product::find($model->product_id)->name;
+                    return $productName;
+                }),
+
+            Sight::make('alt'),
+
+            Sight::make('image')
+                ->render(function($model) {
+                    return "<img width='250px' height='auto' src='{$model->image}' alt='{$model->name}' />";
+                }),
+        ];
     }
 
     /**
