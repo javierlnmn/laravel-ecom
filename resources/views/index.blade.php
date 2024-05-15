@@ -30,7 +30,8 @@
             </div>
         @endif
 
-        <div class="max-w-7xl w-11/12 mx-auto">
+
+        {{-- <div class="max-w-7xl w-11/12 mx-auto">
             <h3 class="font-extrabold uppercase text-4xl">About Jija</h3>
             <div class="flex gap-4 items-center my-7 max-md:flex-col">
                 <p class="max-lg:w-3/5 max-md:w-full w-1/2">
@@ -55,7 +56,7 @@
                     <img class="object-cover w-4/5 -translate-x-6" src="{{ url('/assets/images/about_us_2.png') }}" alt="About us image 2">
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 

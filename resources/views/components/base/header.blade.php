@@ -24,11 +24,18 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        @if (Auth::user()->hasAnyAccess(['platform.index']))
+                            <x-breeze.dropdown-link :href="route('platform.main')">
+                                {{ __('Admin Panel') }}
+                            </x-breeze.dropdown-link>
+                        @endif
+
+
                         <x-breeze.dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-breeze.dropdown-link>
 
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form class="m-0" method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <x-breeze.dropdown-link :href="route('logout')"
@@ -37,6 +44,7 @@
                                 {{ __('Log Out') }}
                             </x-breeze.dropdown-link>
                         </form>
+
                     </x-slot>
                 </x-breeze.dropdown>
                 @endauth

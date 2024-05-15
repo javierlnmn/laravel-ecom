@@ -21,20 +21,20 @@
 
         <div class="mt-auto flex flex-col">
             @if ($product->discount <= 0)
-                <p class="mb-5"><span class="font-extrabold text-2xl mt-auto">{{$product->price}}</span><span class="font-light te text-zinc-500">$</span></p>
+                <p class="mb-5"><span class="font-extrabold text-2xl mt-auto">{{$product->price}}</span><span class="font-light text-md text-zinc-500">$</span></p>
             @else
                 <div class="w-full mt-auto mb-5">
                     <span class="opacity-60 relative">
                         <span class="absolute h-[2px] w-full bg-red-700 top-2"></span>
                         <span class="font-extrabold text-xl">{{$product->price}}</span>
-                        <span class="font-light te text-zinc-500">$</span>
+                        <span class="font-light text-md text-zinc-500">$</span>
                     </span>
-                    <span class="ml-3 font-extrabold text-2xl">{{$product->priceWithDiscount()}}</span><span class="font-light te text-zinc-500">$</span>
+                    <span class="ml-3 font-extrabold text-2xl">{{$product->priceWithDiscount()}}</span><span class="font-light text-md text-zinc-500">$</span>
                 </div>
             @endif
-            <a href="{{route('product.show', ['productSlug' => $product->slug])}}" class="cursor-pointer mt-auto text-center text-zinc-200 bg-zinc-800 hover:bg-zinc-700 py-4 transition-colors">See Item</a>
+            <x-common.simple-button :link="route('product.show', ['productSlug' => $product->slug])" :text="'See Item'" />
         </div>
-       
+
     </div>
 
 </div>
