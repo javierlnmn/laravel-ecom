@@ -3,7 +3,7 @@
     <div class="my-6 max-w-7xl w-11/12 mx-auto">
 
         <div class="grid grid-cols-2 max-lg:grid-cols-1 gap-5">
-            <div class="flex max-lg:flex-col-reverse items-center h-fit gap-3 sticky max-lg:static top-6">
+            {{-- <div class="flex items-center h-fit gap-3 sticky top-6 max-lg:static max-lg:flex-col-reverse">
                 <div class="w-16 flex flex-col max-lg:flex-row justify-center gap-3" id="images-list">
                     @foreach ($product->images as $image)
                         <img class="transition-shado duration-[500ms] cursor-pointer @if ($loop->first) shadow-lg @endif"  src="{{ $image->image }}" alt="{{ $image->alt }}">
@@ -17,7 +17,8 @@
                         <img class="object-cover aspect-square w-full h-auto transition-opacity duration-[500ms] col-start-1 row-start-1 opacity-0 @if ($loop->first) !opacity-100  @endif" src="{{ $image->image }}" alt="{{ $image->alt }}">
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
+            <x-products.product-image-carousel :responsive="true" :sticky="true" :product="$product" :imageList="$product->images" />
             <div class="flex flex-col gap-3">
                 <h1 class="text-6xl max-lg:text-5xl max-md:text-4xl font-black">{{ $product->name }}</h1>
                 <a class="text-amber-600 hover:text-amber-500 w-fit transition-colors font-bold" href="#">{{$product->brand->name}}</a>

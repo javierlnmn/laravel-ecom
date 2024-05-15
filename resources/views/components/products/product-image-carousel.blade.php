@@ -1,45 +1,56 @@
-<div class="relative my-0 mx-auto mb-5">
-    <div class="flex overflow-hidden snap-x snap-mandatory scroll-smooth">
-        @foreach ($imageList as $image)
-            <img class="flex-grow flex-shrink-0 basis-full snap-start aspect-square object-cover" id="slider-image-{{ $image->id }}" src="{{ $image->image }}" alt="{{ $image->alt }}">
+<div class="
+        flex w-full items-center gap-3
+        @if(isset($sticky)) sticky top-6 max-lg:static @endif
+        @if(isset($responsive)) flex-row max-lg:flex-col-reverse @else flex-col-reverse @endif
+    "
+>
+
+    <div class="
+            flex justify-center gap-3
+            @if(isset($responsive)) flex-col lg:w-20 max-lg:flex-row max-lg:h-20 @else flex-row h-20 @endif
+        "
+        id="images-list-{{$product->id}}"
+    >
+
+        @foreach ($product->images as $image)
+            <img class="transition-shadow duration-[500ms] cursor-pointer h-full w-auto aspect-square object-contain @if ($loop->first) shadow-lg @endif"  src="{{ $image->image }}" alt="{{ $image->alt }}">
         @endforeach
     </div>
-    <div class="w-full flex justify-center gap-4 absolute -bottom-14 left-1/2 -translate-x-1/2 z-10">
-        @foreach ($imageList as $image)
-            <a class="w-fit h-12 " href="#slider-image-{{ $image->id }}">
-                <img class="h-full w-auto aspect-square object-cover" id="slider-image-{{ $image->id }}" src="{{ $image->image }}" alt="{{ $image->alt }}">
-            </a>
+    <div class="w-full grid grid-cols-1 grid-rows-1 relative" id="showing-images-{{$product->id}}">
+        @foreach ($product->images as $image)
+            <img class="object-cover aspect-square w-full transition-opacity duration-[500ms] col-start-1 row-start-1 opacity-0 @if ($loop->first) !opacity-100  @endif" src="{{ $image->image }}" alt="{{ $image->alt }}">
         @endforeach
     </div>
+    <script>
+        const imagesContainer{{$product->id}} = document.getElementById('images-list-{{$product->id}}');
+        const showingImages{{$product->id}} = document.getElementById('showing-images-{{$product->id}}');
+        const selectedImageClassesList{{$product->id}} = ['shadow-lg'];
+
+        const toggleSelectedImageClassesList{{$product->id}} = (clickedImage) => {
+            for (let image of imagesContainer{{$product->id}}.children) {
+                if (image.src === clickedImage.src) {
+                    clickedImage.classList.add(...selectedImageClassesList{{$product->id}});
+                    continue;
+                }
+                image.classList.remove(...selectedImageClassesList{{$product->id}});
+            }
+        }
+
+        imagesContainer{{$product->id}}.addEventListener('click', function(event) {
+            const clickedImage = event.target;
+
+            if (!clickedImage.src) return;
+
+            toggleSelectedImageClassesList{{$product->id}}(clickedImage);
+
+            for (let image of showingImages{{$product->id}}.children) {
+                if (image.src == clickedImage.src) {
+                    image.classList.add('!opacity-100');
+                    continue;
+                }
+                image.classList.remove('!opacity-100');
+            }
+        });
+
+    </script>
 </div>
-{{-- <div>
-    <div class="relative w-full h-full aspect-square mx-auto my-0">
-
-        <button id="{{ $product->id }}-button-left" class="absolute top-1/2 -translate-y-1/2 left-3 z-20">
-            <
-        </button>
-
-        <div class="h-full relative"
-            <ul>
-            @foreach ($imageList as $image)
-                <li class="absolute bottom-0 top-0 w-full h-full">
-                    <img class="w-full h-full object-cover aspect-square" src="{{ $image->image }}" alt="">
-                </li>
-            @endforeach
-            </ul>
-        </div>
-
-        <button id="{{ $product->id }}-button-right" class="absolute top-1/2 -translate-y-1/2 right-3 z-20">
-            >
-        </button>
-
-        <div class="flex justify-center gap-1 my-1">
-
-            @foreach ($imageList as $image)
-                <button class="w-3 h-1 bg-zinc-300 @if ($loop->first) !bg-zinc-400 @endif"></button>
-            @endforeach
-
-        </div>
-
-    </div>
-</div> --}}
