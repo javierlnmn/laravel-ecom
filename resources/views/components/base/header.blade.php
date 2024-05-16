@@ -8,8 +8,14 @@
                 <x-breeze.application-logo-notext class="w-12 h-w-12" color="#FDFDFD" />
             </a>
 
-            <nav class="flex gap-4 items-center justify-center">
+            <nav class="flex gap-4 items-center justify-center ">
+                <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Products</a>
+                <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Brands</a>
+                <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">About us</a>
+                <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Contact Us</a>
+                <p class="text-sm font-medium text-zinc-300 select-none">|</p>
                 @auth
+                <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Shopping Cart</a>
                 <x-breeze.dropdown width='w-72' align='right'>
                     <x-slot name="trigger">
                         <button class="inline-flex items-center border border-transparent text-sm leading-4 font-medium rounded-md text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">

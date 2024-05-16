@@ -16,4 +16,9 @@ class Size extends Model
     {
         return $this->belongsToMany(Product::class, 'product_stock')->withPivot('quantity')->withTimestamps();
     }
+
+    public static function getSizeOptions()
+    {
+        return static::pluck('id', 'name');
+    }
 }

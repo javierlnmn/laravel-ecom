@@ -14,6 +14,24 @@ class ProductStock extends Model
 
     protected $table = 'product_stock';
 
+    public function save(array $options = [])
+    {
+        if (!is_null($this->getKey())) {
+            return parent::save($options);
+        }
+
+        $existingStock = static::where('product_id', $this->product_id)
+            ->where('size_id', $this->size_id)
+            ->first();
+
+        if ($existingStock) {
+            $existingStock->increment('quantity', $this->quantity);
+            return;
+        }
+
+        parent::save($options);
+    }
+
     public function product()
     {
         return $this->belongsTo(Product::class);

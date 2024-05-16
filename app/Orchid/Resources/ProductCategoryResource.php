@@ -44,17 +44,6 @@ class ProductCategoryResource extends Resource
         ];
     }
 
-
-    private function renderRecursive($model) {
-        if (!$model->parent_id) {
-            return "www.example.com/categories/<b>{$model->slug}</b>";
-        } else {
-            $parent = ProductCategory::find($model->parent_id);
-            $parentSlug = $this->renderRecursive($parent);
-            return "{$parentSlug}/<b>{$model->slug}</b>";
-        }
-    }
-
     /**
      * Get the columns displayed by the resource.
      *
@@ -66,7 +55,7 @@ class ProductCategoryResource extends Resource
         return [
             TD::make('name'),
             TD::make('slug')
-                ->render(fn($model) => $this->renderRecursive($model)),
+                ->render(fn($model) => "www.example.com/categories/<b>{$model->slug}</b>"),
             TD::make('parent')
                 ->render(function($model) {
                     if (!$model->parent_id) return '<span style="opacity: 50%;">No parent category.</span>';
@@ -86,7 +75,7 @@ class ProductCategoryResource extends Resource
         return [
             Sight::make('name'),
             Sight::make('slug')
-                ->render(fn($model) => $this->renderRecursive($model)),
+                ->render(fn($model) => "www.example.com/categories/<b>{$model->slug}</b>"),
             Sight::make('description')
                 ->render(function($model) {
                     if (!$model->description) {

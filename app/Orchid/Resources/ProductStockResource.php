@@ -77,7 +77,6 @@ class ProductStockResource extends Resource
                     return $renderedImages;
                 }),
             TD::make('size')
-                ->sort()
                 ->render(function ($model) {
                     $size = Size::find($model->size_id)->name;
                     return $size;

@@ -22,6 +22,7 @@ class Product extends Model
         'discount',
     ];
 
+
     public function sluggable(): array
     {
         return [
@@ -51,6 +52,22 @@ class Product extends Model
         if ($this->discount <= 0) return $this->price;
         $finalPrice = number_format($this->price - ($this->price * $this->discount / 100), 2, '.', ',');
         return $finalPrice;
+    }
+
+    public function stock()
+    {
+        $stock = $this->hasMany(ProductStock::class);
+        return $stock;
+    }
+
+    public function getTotalStock()
+    {
+        return $this->stock()->sum('quantity');
+    }
+
+    public function getProductStock()
+    {
+        return ProductStock::find();
     }
 
 }

@@ -7,13 +7,13 @@
 
     <div class="
             flex justify-center gap-3
-            @if(isset($responsive)) flex-col lg:w-20 max-lg:flex-row max-lg:h-20 @else flex-row h-20 @endif
+            @if(isset($responsive)) flex-col  lg:w-[13%] max-lg:flex-row max-lg:h-20 @else flex-row h-20 @endif
         "
         id="images-list-{{$product->id}}"
     >
 
         @foreach ($product->images as $image)
-            <img class="transition-shadow duration-[500ms] cursor-pointer h-full w-auto aspect-square object-contain @if ($loop->first) shadow-lg @endif"  src="{{ $image->image }}" alt="{{ $image->alt }}">
+            <img class="transition-shadow duration-[500ms] cursor-pointer h-full w-auto aspect-square object-cover @if ($loop->first) shadow-lg @endif"  src="{{ $image->image }}" alt="{{ $image->alt }}">
         @endforeach
     </div>
     <div class="w-full grid grid-cols-1 grid-rows-1 relative" id="showing-images-{{$product->id}}">
