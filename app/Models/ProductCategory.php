@@ -27,4 +27,25 @@ class ProductCategory extends Model
         return self::where('slug', $slug)->first();
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(ProductCategory::class, 'parent_id');
+    }
+
+    public function allProducts()
+    {
+        $products = $this->products;
+
+        foreach ($this->children as $childCategory) {
+            $products = $products->merge($childCategory->allProducts());
+        }
+
+        return $products;
+    }
+
 }

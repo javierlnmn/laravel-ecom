@@ -23,18 +23,18 @@
         </div>
     </div>
     <script>
-        const numberInput = document.getElementById('number-input-{{$id}}');
-        const buttonIncreaseNumber = document.getElementById('button-increase-number-{{$id}}');
-        const buttonDecreaseNumber = document.getElementById('button-decrease-number-{{$id}}');
+        const numberInput{{$id}} = document.getElementById('number-input-{{$id}}');
+        const buttonIncreaseNumber{{$id}} = document.getElementById('button-increase-number-{{$id}}');
+        const buttonDecreaseNumber{{$id}} = document.getElementById('button-decrease-number-{{$id}}');
 
-        buttonIncreaseNumber.addEventListener('click', () => {
-            if(numberInput.value >= {{$max}}) return;
-            numberInput.value = parseInt(numberInput.value) + 1;
+        buttonIncreaseNumber{{$id}}.addEventListener('click', () => {
+            if(numberInput{{$id}}.value >= {{$max}}) return;
+            numberInput{{$id}}.value = parseInt(numberInput{{$id}}.value) + 1;
         });
 
-        buttonDecreaseNumber.addEventListener('click', () => {
-            if(numberInput.value <= {{$min}}) return;
-            numberInput.value = parseInt(numberInput.value) - 1;
+        buttonDecreaseNumber{{$id}}.addEventListener('click', () => {
+            if(numberInput{{$id}}.value <= {{$min}}) return;
+            numberInput{{$id}}.value = parseInt(numberInput{{$id}}.value) - 1;
         });
 
     </script>

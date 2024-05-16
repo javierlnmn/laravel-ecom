@@ -6,44 +6,44 @@
 >
 
     <div class="
-            flex justify-center gap-3
+            flex justify-center gap-3 overflow-x-scroll w-full
             @if(isset($responsive)) flex-col  lg:w-[13%] max-lg:flex-row max-lg:h-20 @else flex-row h-20 @endif
         "
-        id="images-list-{{$product->id}}"
+        id="images-list-{{ $uniqueId }}"
     >
 
         @foreach ($product->images as $image)
             <img class="transition-shadow duration-[500ms] cursor-pointer h-full w-auto aspect-square object-cover @if ($loop->first) shadow-lg @endif"  src="{{ $image->image }}" alt="{{ $image->alt }}">
         @endforeach
     </div>
-    <div class="w-full grid grid-cols-1 grid-rows-1 relative" id="showing-images-{{$product->id}}">
+    <div class="w-full grid grid-cols-1 grid-rows-1 relative" id="showing-images-{{ $uniqueId }}">
         @foreach ($product->images as $image)
             <img class="object-cover aspect-square w-full transition-opacity duration-[500ms] col-start-1 row-start-1 opacity-0 @if ($loop->first) !opacity-100  @endif" src="{{ $image->image }}" alt="{{ $image->alt }}">
         @endforeach
     </div>
     <script>
-        const imagesContainer{{$product->id}} = document.getElementById('images-list-{{$product->id}}');
-        const showingImages{{$product->id}} = document.getElementById('showing-images-{{$product->id}}');
-        const selectedImageClassesList{{$product->id}} = ['shadow-lg'];
+        const imagesContainer{{ $uniqueId }} = document.getElementById('images-list-{{ $uniqueId }}');
+        const showingImages{{ $uniqueId }} = document.getElementById('showing-images-{{ $uniqueId }}');
+        const selectedImageClassesList{{ $uniqueId }} = ['shadow-lg'];
 
-        const toggleSelectedImageClassesList{{$product->id}} = (clickedImage) => {
-            for (let image of imagesContainer{{$product->id}}.children) {
+        const toggleSelectedImageClassesList{{ $uniqueId }} = (clickedImage) => {
+            for (let image of imagesContainer{{ $uniqueId }}.children) {
                 if (image.src === clickedImage.src) {
-                    clickedImage.classList.add(...selectedImageClassesList{{$product->id}});
+                    clickedImage.classList.add(...selectedImageClassesList{{ $uniqueId }});
                     continue;
                 }
-                image.classList.remove(...selectedImageClassesList{{$product->id}});
+                image.classList.remove(...selectedImageClassesList{{ $uniqueId }});
             }
         }
 
-        imagesContainer{{$product->id}}.addEventListener('click', function(event) {
+        imagesContainer{{ $uniqueId }}.addEventListener('click', function(event) {
             const clickedImage = event.target;
 
             if (!clickedImage.src) return;
 
-            toggleSelectedImageClassesList{{$product->id}}(clickedImage);
+            toggleSelectedImageClassesList{{ $uniqueId }}(clickedImage);
 
-            for (let image of showingImages{{$product->id}}.children) {
+            for (let image of showingImages{{ $uniqueId }}.children) {
                 if (image.src == clickedImage.src) {
                     image.classList.add('!opacity-100');
                     continue;

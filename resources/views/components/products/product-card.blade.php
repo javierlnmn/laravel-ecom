@@ -12,12 +12,12 @@
         @endif
     @endif
 
-    <x-products.product-image-carousel :product="$product" :imageList="$product->images" />
+    <x-products.product-image-carousel :uniqueId="uniqid()" :product="$product" :imageList="$product->images" />
 
     <div class="mt-2 flex flex-col justify-normal gap-3 h-full">
         <p class="font-extrabold text-2xl">{{$product->name}}</p>
         <p class="font-light text-sm">{{Str::words($product->description, 12)}}</p>
-        <a class="text-amber-600 font-bold" href="#">{{$product->brand->name}}</a>
+        <x-common.amber-link :link="'#'" :text="$product->brand->name" />
 
         @if ($product->getTotalStock() > 0)
             <div class="mt-auto flex flex-col">

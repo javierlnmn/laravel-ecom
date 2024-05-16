@@ -13,9 +13,7 @@ class HomeController extends Controller
     {
         $latestProducts = Product::latest()->take(4)->get();
 
-        return view('index', [
-            'latestProducts' => $latestProducts,
-        ]);
+        return view('index', compact('latestProducts'));
 
     }
 

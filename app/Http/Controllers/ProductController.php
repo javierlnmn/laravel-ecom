@@ -7,7 +7,7 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    
+
     public function index()
     {
 
@@ -18,9 +18,7 @@ class ProductController extends Controller
 
         $product = Product::findBySlug($productSlug);
 
-        return view('products/product-detail', [
-            'product' => $product,
-        ]);
+        return view('products.product-detail', compact('product'));
 
     }
 
