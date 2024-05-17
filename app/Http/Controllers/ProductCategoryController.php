@@ -11,7 +11,7 @@ class ProductCategoryController extends Controller
     {
         $categories = ProductCategory::with(['products' => function ($query) {
             $query->limit(4);
-        }])->get();
+        }])->paginate(5);
         return view('categories.category-index', compact('categories'));
     }
 

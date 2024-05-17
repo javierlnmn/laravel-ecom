@@ -15,7 +15,7 @@
                             :name="'product-units'"
                             :initialValue="'1'"
                             :min="'1'"
-                            :max="$product->getTotalStock()" {{-- available units method --}}
+                            :max="$product->getTotalStock()"
                             :id="$product->id"
                         />
                         <x-products.product-size-select-input

@@ -28,6 +28,8 @@
 
         </div>
 
+        {{$categories->links()}}
+
     </div>
 
 </x-app-layout>

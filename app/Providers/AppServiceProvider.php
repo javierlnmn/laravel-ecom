@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ProductCategory;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('includes.footer', function ($view) {
-            // $categories = Category::all();
-            // $view->with('categories', $categories);
+        view()->composer('components.base.footer', function ($view) {
+            $footerCategories = ProductCategory::all()->take(5);
+            $view->with('footerCategories', $footerCategories);
         });
     }
 }
