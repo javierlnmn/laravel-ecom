@@ -4,7 +4,7 @@
 
         <div class="flex flex-col gap-3 items-start">
             <p class="font-extrabold">Products</p>
-            <a class="font-light hover:text-zinc-400 transition-colors" href="#">Products</a>
+            <a class="font-light hover:text-zinc-400 transition-colors" href="{{ route('product.index') }}">Products</a>
             <a class="font-light hover:text-zinc-400 transition-colors" href="{{ route('category.index') }}">Categories</a>
             <a class="font-light hover:text-zinc-400 transition-colors" href="{{ route('brand.index') }}">Brands</a>
         </div>
