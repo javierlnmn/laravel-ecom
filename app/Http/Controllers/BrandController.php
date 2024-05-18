@@ -18,7 +18,9 @@ class BrandController extends Controller
     {
         $brand = Brand::findBySlug($brandSlug);
 
-        return view('brands.brand-detail', compact('brand'));
+        $brandProducts = $brand->products()->paginate(8);
+
+        return view('brands.brand-detail', compact('brand', 'brandProducts'));
     }
 
 }
