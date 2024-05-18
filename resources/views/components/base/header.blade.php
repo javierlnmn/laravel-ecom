@@ -11,7 +11,7 @@
             <nav class="flex gap-4 items-center justify-center ">
                 <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Products</a>
                 <a href="{{ route('category.index') }}" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Categories</a>
-                <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Brands</a>
+                <a href="{{ route('brand.index') }}" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Brands</a>
                 <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">About us</a>
                 <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Contact Us</a>
                 <p class="text-sm font-medium text-zinc-300 select-none">|</p>

@@ -4,22 +4,22 @@
 
         <div class="flex flex-col gap-3 items-start">
             <p class="font-extrabold">Products</p>
-            <a class="font-light" href="#">Products</a>
-            <a class="font-light" href="#">Categories</a>
-            <a class="font-light" href="#">Brands</a>
+            <a class="font-light hover:text-zinc-400 transition-colors" href="#">Products</a>
+            <a class="font-light hover:text-zinc-400 transition-colors" href="{{ route('category.index') }}">Categories</a>
+            <a class="font-light hover:text-zinc-400 transition-colors" href="{{ route('brand.index') }}">Brands</a>
         </div>
         <div class="flex flex-col gap-3 items-start">
             <p class="font-extrabold">Categories</p>
             @foreach ($footerCategories as $category)
-                <a class="font-light" href="{{route('category.show', ['categorySlug' => $category->slug])}}">{{$category->name}}</a>
+                <a class="font-light hover:text-zinc-400 transition-colors" href="{{route('category.show', ['categorySlug' => $category->slug])}}">{{$category->name}}</a>
             @endforeach
-            <a class="font-light" href="{{route('category.index')}}">See all</a>
+            <a class="font-light hover:text-zinc-400 transition-colors" href="{{route('category.index')}}">See all</a>
         </div>
 
         <div class="flex flex-col gap-3 items-start">
             <p class="font-extrabold">About Us</p>
-            <a class="font-light" href="#">About Us</a>
-            <a class="font-light" href="#">Contact Us</a>
+            <a class="font-light hover:text-zinc-400 transition-colors" href="#">About Us</a>
+            <a class="font-light hover:text-zinc-400 transition-colors" href="#">Contact Us</a>
         </div>
 
 

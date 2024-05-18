@@ -30,34 +30,6 @@
             </div>
         @endif
 
-
-        {{-- <div class="max-w-7xl w-11/12 mx-auto">
-            <h3 class="font-extrabold uppercase text-4xl">About Jija</h3>
-            <div class="flex gap-4 items-center my-7 max-md:flex-col">
-                <p class="max-lg:w-3/5 max-md:w-full w-1/2">
-                    Our skate shop is the culmination of a shared dream among friends who spent countless hours
-                    shredding in the same park. What started as a simple passion for skating evolved into a thriving
-                    business, fueled by our love for the sport.
-                    <br>
-                    Driven by our desire to provide fellow skaters with quality gear and apparel, we set out to create a
-                    space where the skate community could come together. Our shelves are stocked with a curated
-                    selection of decks, hoodies, and skate items that reflect our dedication to the scene.
-                    <br>
-                    But our shop is more than just a retail space—it's a gathering place for skaters of all levels.
-                    Whether you're perfecting your kickflips or just starting out, you'll find a welcoming atmosphere
-                    and a supportive community here.
-                    <br>
-                    From the early days of dreaming big in the park to the reality of running our own shop, our journey
-                    has been one of passion, perseverance, and friendship. And we're excited to share that journey with
-                    you.
-                </p>
-                <div class="max-lg:w-2/5 max-md:w-full max-md:my-14 w-1/2 flex max-h-[400px] max-lg:!max-h-none max-lg:scale-125 max-md:scale-100">
-                    <img class="object-cover w-4/5 -translate-y-16 translate-x-8" src="{{ url('/assets/images/about_us_1.png') }}" alt="About us image 1">
-                    <img class="object-cover w-4/5 -translate-x-6" src="{{ url('/assets/images/about_us_2.png') }}" alt="About us image 2">
-                </div>
-            </div>
-        </div> --}}
-
     </div>
 
 </x-app-layout>
