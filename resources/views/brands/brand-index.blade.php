@@ -8,7 +8,9 @@
             <p class="text-2xl text-center font-thin">Some of the brands we work with:</p>
             <div class="flex flex-wrap gap-6 gap-y-3 items-center justify-center">
                 @foreach($brands->slice(0, 6) as $brand)
-                    <img class="max-w-32 w-full h-auto aspect-square object-contain mix-blend-multiply" src="{{$brand->image}}" />
+                    <a href="{{route('brand.show', ['brandSlug' => $brand->slug])}}">
+                        <img class="max-w-32 w-full h-auto aspect-square object-contain mix-blend-multiply" src="{{$brand->image}}" />
+                    </a>
                 @endforeach
             </div>
             <p class="text-2xl text-center font-thin">and many more...</p>
@@ -24,7 +26,7 @@
                 @if($brand->description)
                     <p class="opacity-50">{{Str::words($brand->description, 12)}}</p>
                 @endif
-                <x-common.simple-button :additionalClasses="'mt-auto'" :link="'route()'" :text="'See '.$brand->name" />
+                <x-common.simple-button :additionalClasses="'mt-auto'" :link="route('brand.show', ['brandSlug' => $brand->slug])" :text="'See '.$brand->name" />
             </div>
             @endforeach
         </div>

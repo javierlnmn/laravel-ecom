@@ -33,4 +33,9 @@ class Brand extends Model
         return self::where('slug', $slug)->first();
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'brand_id')->orderBy('created_at', 'DESC');
+    }
+
 }

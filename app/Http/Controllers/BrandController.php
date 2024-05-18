@@ -14,4 +14,11 @@ class BrandController extends Controller
         return view('brands.brand-index', compact('brands'));
     }
 
+    public function show($brandSlug)
+    {
+        $brand = Brand::findBySlug($brandSlug);
+
+        return view('brands.brand-detail', compact('brand'));
+    }
+
 }
