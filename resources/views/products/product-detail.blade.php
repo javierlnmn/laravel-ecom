@@ -3,7 +3,13 @@
     <div class="my-6 max-w-7xl w-11/12 mx-auto">
 
         <div class="grid grid-cols-2 max-lg:grid-cols-1 gap-5">
-            <x-products.product-image-carousel :uniqueId="uniqid()" :responsive="true" :sticky="true" :product="$product" :imageList="$product->images" />
+            <x-products.product-image-carousel
+                :uniqueId="uniqid()"
+                :responsive="true"
+                :sticky="true"
+                :product="$product"
+                :imageList="$product->images"
+            />
             <div class="flex flex-col gap-3">
                 <h1 class="text-6xl max-lg:text-5xl max-md:text-4xl font-black">{{ $product->name }}</h1>
                 <x-common.amber-link :link="'#'" :text="$product->brand->name" />
