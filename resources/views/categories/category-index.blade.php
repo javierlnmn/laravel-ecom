@@ -11,7 +11,7 @@
                     <h3 class="font-extrabold uppercase text-4xl">{{$category->name}}</h3>
                     <span class="h-[1px] bg-zinc-800/30 flex-1"></span>
                     @if ($category->allProducts()->count() > 0)
-                        <x-common.amber-link :link="route('category.show', ['categorySlug' => $category->slug])" :text="'See complete category'" />
+                        <x-common.rose-link :link="route('category.show', ['categorySlug' => $category->slug])" :text="'See complete category'" />
                     @endif
                 </div>
                 @if ($category->allProducts()->count() > 0)

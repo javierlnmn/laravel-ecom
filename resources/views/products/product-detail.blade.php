@@ -12,8 +12,14 @@
             />
             <div class="flex flex-col gap-3">
                 <h1 class="text-6xl max-lg:text-5xl max-md:text-4xl font-black">{{ $product->name }}</h1>
-                <x-common.amber-link :link="'#'" :text="$product->brand->name" />
                 <p class="opacity-50">{{ $product->sku }}</p>
+                <x-common.rose-link :link="'#'" :text="$product->brand->name" />
+                <div class="flex gap-2 items-center">
+                    @foreach ($product->category->parentList() as $category)
+                        <x-common.rose-link :link="route('category.show', ['categorySlug' => $category->slug])" :text="$category->name" />
+                        @if(!$loop->last) <span class="font-bold">&gt;</span> @endif
+                    @endforeach
+                </div>
                 <p class="whitespace-pre-wrap ">{{ $product->description }}</p>
                 @if ($product->getTotalStock() > 0)
                     <div class="flex gap-4 items-center">
@@ -45,7 +51,8 @@
                         :text="'Add to Cart'"
                     />
                 @else
-                    <p class="text-red-700 text-xl font-bold">Out of stock</p>
+                    <p class="text-zinc-700/50 text-xl font-bold mt-auto">Out of stock</p>
+                    <x-common.rose-link :link="route('category.show', ['categorySlug' => $product->category->slug])" :text="'See more ' . strtolower($product->category->name)" />
                 @endif
             </div>
         </div>

@@ -37,6 +37,17 @@ class ProductCategory extends Model
         return $this->hasMany(ProductCategory::class, 'parent_id');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(ProductCategory::class, 'parent_id');
+    }
+
+    public function parentList()
+    {
+        if (!$this->parent_id) return [$this];
+        return array_merge($this->parent->parentList(), [$this]);
+    }
+
     public function allProducts()
     {
         $products = $this->products;

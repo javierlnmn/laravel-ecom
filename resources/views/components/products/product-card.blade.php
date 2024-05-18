@@ -8,7 +8,7 @@
         @elseif ($product->discount < 75)
             <span class="p-1 absolute z-20 right-2 top-2 bg-emerald-500 rounded-full text-zinc-100 text-xs font-semibold">-{{$product->discount}}%</span>
         @else
-            <span class="p-1 absolute z-20 right-2 top-2 bg-amber-500 rounded-full text-zinc-100 text-xs font-semibold">-{{$product->discount}}%</span>
+            <span class="p-1 absolute z-20 right-2 top-2 bg-rose-500 rounded-full text-zinc-100 text-xs font-semibold">-{{$product->discount}}%</span>
         @endif
     @endif
 
@@ -17,7 +17,7 @@
     <div class="mt-2 flex flex-col justify-normal gap-3 h-full">
         <p class="font-extrabold text-2xl">{{$product->name}}</p>
         <p class="font-light text-sm">{{Str::words($product->description, 12)}}</p>
-        <x-common.amber-link :link="'#'" :text="$product->brand->name" />
+        <x-common.rose-link :link="'#'" :text="$product->brand->name" />
 
         @if ($product->getTotalStock() > 0)
             <div class="mt-auto flex flex-col">
@@ -36,7 +36,7 @@
                 <x-common.simple-button :link="route('product.show', ['productSlug' => $product->slug])" :text="'See Item'" />
             </div>
         @else
-            <p class="text-red-700 text-xl font-bold mt-auto">Out of stock</p>
+            <p class="text-zinc-700/50 text-xl font-bold mt-auto">Out of stock</p>
             <x-common.simple-button :link="route('product.show', ['productSlug' => $product->slug])" :text="'See Item'" />
         @endif
 

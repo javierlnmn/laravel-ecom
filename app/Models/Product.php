@@ -13,15 +13,6 @@ class Product extends Model
 {
     use HasFactory, AsSource, Filterable, Attachable, Sluggable;
 
-    protected $fillable = [
-        'sku',
-        'name',
-        'description',
-        'brand_id',
-        'price',
-        'discount',
-    ];
-
 
     public function sluggable(): array
     {
@@ -45,6 +36,11 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class);
     }
 
     public function priceWithDiscount()
