@@ -10,8 +10,9 @@ class BrandController extends Controller
 
     public function index()
     {
-        $brands = Brand::get();
-        return view('brands.brand-index', compact('brands'));
+        $brandsBanner = Brand::get();
+        $brands = Brand::paginate(8);
+        return view('brands.brand-index', compact('brands', 'brandsBanner'));
     }
 
     public function show($brandSlug)

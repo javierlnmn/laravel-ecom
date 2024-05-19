@@ -13,7 +13,7 @@
                 </h1>
                 <p class="select-none w-fit px-2 py-1 rounded-md text-rose-600">From skaters, for skaters</p>
                 <a class="mt-5 uppercase text-xs text-zinc-300 bg-zinc-800 transition-colors hover:bg-zinc-700 w-fit px-4 py-2 rounded-md font-semibold"
-                    href="">Show Me</a>
+                    href="{{route('product.index')}}">Show Me</a>
             </div>
         </div>
 

@@ -19,7 +19,9 @@ class ProductCategoryController extends Controller
     {
         $category = ProductCategory::findBySlug($categorySlug);
 
-        return view('categories.category-detail', compact('category'));
+        $categoryProducts = $category->allProducts();
+
+        return view('categories.category-detail', compact('category', 'categoryProducts'));
     }
 
 }

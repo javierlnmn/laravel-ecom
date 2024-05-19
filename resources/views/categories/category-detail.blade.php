@@ -10,7 +10,7 @@
 
         <div class="flex flex-col gap-5">
             <div class="grid grid-cols-4 justify-center max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6 gap-y-12 pt-3 pb-6">
-                @foreach ($category->allProducts() as $product)
+                @foreach ($categoryProducts as $product)
                     <x-products.product-card :product="$product" />
                 @endforeach
             </div>

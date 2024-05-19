@@ -7,7 +7,7 @@
         <div class="my-12 flex flex-col gap-12">
             <p class="text-2xl text-center font-thin">Some of the brands we work with:</p>
             <div class="flex flex-wrap gap-6 gap-y-3 items-center justify-center">
-                @foreach($brands->slice(0, 6) as $brand)
+                @foreach($brandsBanner->slice(0, 6) as $brand)
                     <a href="{{route('brand.show', ['brandSlug' => $brand->slug])}}">
                         <img class="max-w-32 w-full h-auto aspect-square object-contain mix-blend-multiply" src="{{$brand->image}}" />
                     </a>
@@ -30,6 +30,7 @@
             </div>
             @endforeach
         </div>
+        {{$brands->links()}}
 
     </div>
 

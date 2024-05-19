@@ -17,14 +17,14 @@
     <div class="mt-2 flex flex-col justify-normal gap-3 h-full">
         <p class="font-extrabold text-2xl">{{$product->name}}</p>
         <p class="font-light text-sm">{{Str::words($product->description, 12)}}</p>
-        <x-common.rose-link :link="'#'" :text="$product->brand->name" />
+        <x-common.rose-link :link="route('brand.show', ['brandSlug' => $product->brand->slug])" :text="$product->brand->name" />
 
         @if ($product->getTotalStock() > 0)
             <div class="mt-auto flex flex-col">
                 @if ($product->discount <= 0)
-                    <p class="mb-5"><span class="font-extrabold text-2xl mt-auto">{{$product->price}}</span><span class="font-light text-md text-zinc-500">$</span></p>
+                    <p><span class="font-extrabold text-2xl mt-auto">{{$product->price}}</span><span class="font-light text-md text-zinc-500">$</span></p>
                 @else
-                    <div class="w-full mt-auto mb-5">
+                    <div class="w-full mt-auto">
                         <span class="opacity-60 relative">
                             <span class="absolute h-[2px] w-full bg-red-700 top-2"></span>
                             <span class="font-extrabold text-xl">{{$product->price}}</span>
@@ -33,12 +33,11 @@
                         <span class="ml-3 font-extrabold text-2xl">{{$product->priceWithDiscount()}}</span><span class="font-light text-md text-zinc-500">$</span>
                     </div>
                 @endif
-                <x-common.simple-button :link="route('product.show', ['productSlug' => $product->slug])" :text="'See Item'" />
             </div>
         @else
             <p class="text-zinc-700/50 text-xl font-bold mt-auto">Out of stock</p>
-            <x-common.simple-button :link="route('product.show', ['productSlug' => $product->slug])" :text="'See Item'" />
         @endif
+        <x-common.simple-button :link="route('product.show', ['productSlug' => $product->slug])" :text="'See Item'" />
 
     </div>
 
