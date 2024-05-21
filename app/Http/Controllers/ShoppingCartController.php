@@ -29,9 +29,10 @@ class ShoppingCartController extends Controller
 
         $productStock = ProductStock::where('product_id', $productId)
             ->where('size_id', $productSize)
+            ->whereColumn('quantity', '>', $productUnits)
             ->first();
 
-        if ($productStock->quantity < $productUnits)
+        if (!$productStock)
         {
             return redirect()->back()->withErrors(['message' => 'The product size combination does not exist.'])->withInput();
         }
@@ -48,6 +49,12 @@ class ShoppingCartController extends Controller
             'price' => $product->price,
         ]);
 
+        return redirect()->route('cart.show');
+    }
+
+    public function delete($cartProductId)
+    {
+        ShoppingCartProduct::find($cartProductId)->delete();
         return redirect()->route('cart.show');
     }
 }

@@ -25,7 +25,11 @@
         @endif
         <div class="mt-auto max-w-[500px] w-full self-end flex justify-items-end gap-4 items-center max-md:max-w-none max-md:mt-6 max-sm:flex-col">
             <x-common.simple-button :additionalClasses="'w-full h-full'" :link="route('product.show', ['productSlug' => $cartProduct->product->slug])" :text="'See Item'" />
-            <x-common.simple-button :additionalClasses="'w-full h-full !bg-red-600/90 hover:!bg-red-600/70'" :link="route('product.show', ['productSlug' => $cartProduct->product->slug])" :text="'Delete from cart'" :submitButton="true" />
+            <form class="w-full" action="{{route('cart.delete', ['cartProductId' => $cartProduct->id])}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <x-common.simple-button :additionalClasses="'w-full h-full !bg-red-600/90 hover:!bg-red-600/70'" :text="'Delete from cart'" :submitButton="true" />
+            </form>
         </div>
     </div>
 </div>
