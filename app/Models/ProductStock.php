@@ -14,6 +14,10 @@ class ProductStock extends Model
 
     protected $table = 'product_stock';
 
+    protected $fillable = [
+        'quantity',
+    ];
+
     public function save(array $options = [])
     {
         if (!is_null($this->getKey())) {

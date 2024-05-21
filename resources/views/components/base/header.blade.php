@@ -16,7 +16,7 @@
                 <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Contact Us</a>
                 <p class="text-sm font-medium text-zinc-300 select-none">|</p>
                 @auth
-                <a href="#" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Shopping Cart</a>
+                <a href="{{ route('cart.show') }}" class="text-sm font-medium text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">Shopping Cart</a>
                 <x-breeze.dropdown width='w-72' align='right'>
                     <x-slot name="trigger">
                         <button class="inline-flex items-center border border-transparent text-sm leading-4 font-medium rounded-md text-zinc-300 hover:text-zinc-100 focus:text-zinc-100 transition-colors">

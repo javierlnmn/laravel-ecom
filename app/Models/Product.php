@@ -47,7 +47,16 @@ class Product extends Model
     {
         if ($this->discount <= 0) return $this->price;
         $finalPrice = number_format($this->price - ($this->price * $this->discount / 100), 2, '.', ',');
-        return $finalPrice;
+        return $this->formatPrice($finalPrice);
+    }
+
+    private function formatPrice($price)
+    {
+        if (floor($price) == $price) {
+            return number_format($price, 0, '.', ',');
+        } else {
+            return number_format($price, 2, '.', ',');
+        }
     }
 
     public function stock()

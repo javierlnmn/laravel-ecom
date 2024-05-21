@@ -22,8 +22,11 @@
                 </div>
                 <p class="whitespace-pre-wrap ">{{ $product->description }}</p>
                 @if ($product->getTotalStock() > 0)
+                <form method="POST" action="{{ route('cart.store', ['productId' => $product->id]) }}" class="flex flex-col gap-3">
+                    @csrf
                     <div class="flex gap-4 items-center">
                         <x-common.number-input
+                            :required="'true'"
                             :name="'product-units'"
                             :initialValue="'1'"
                             :min="'1'"
@@ -31,6 +34,7 @@
                             :id="$product->id"
                         />
                         <x-products.product-size-select-input
+                            :required="'true'"
                             :name="'product-size'"
                             :product="$product"
                         />
@@ -46,10 +50,11 @@
                         <span class="ml-3 font-extrabold text-4xl">{{$product->priceWithDiscount()}}</span><span class="font-light text-lg text-zinc-500">$</span>
                     </div>
                     <x-common.simple-button
-                        :link="'#'"
+                        :submitButton="true"
                         :additionalClasses="'text-xl font-extrabold'"
                         :text="'Add to Cart'"
                     />
+                </form>
                 @else
                     <p class="text-zinc-700/50 text-xl font-bold mt-auto">Out of stock</p>
                     <x-common.rose-link :link="route('category.show', ['categorySlug' => $product->category->slug])" :text="'See more ' . strtolower($product->category->name)" />

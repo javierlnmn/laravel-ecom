@@ -5,6 +5,9 @@
         </div>
         <div>
             <input
+                @if (isset($required))
+                required="{{$required}}"
+                @endif
                 name="{{$name}}"
                 type="number"
                 @if (isset($min)) min="{{$min}}" @endif
