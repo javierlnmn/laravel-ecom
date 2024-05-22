@@ -4,6 +4,8 @@
 
         <h1 class="font-extrabold uppercase text-4xl">Your Shopping Cart</h3>
 
+        @if (count($userCart->cartProducts) > 0)
+
         <div class="flex flex-col gap-5 items-center justify-center mt-6">
             @foreach ($userCart->cartProducts as $cartProduct)
                 <x-cart.cart-product-card :cartProduct="$cartProduct" />
@@ -17,6 +19,12 @@
             <p class="opacity-50 text-light">Taxes and shipping calculated at checkout </p>
             <x-common.simple-button :additionalClasses="'mt-4 w-[200px] max-md:w-full'" :link="''" :text="'Checkout'" />
         </div>
+
+        @else
+
+        <p class="opacity-50 mt-6">Your shopping cart is empty yet...</p>
+
+        @endif
 
     </div>
 
