@@ -65,12 +65,12 @@ class ShoppingCartController extends Controller
             ]);
         }
 
-        return redirect()->route('cart.show');
+        return redirect()->route('cart.show')->with('success', 'Item added to the cart!');
     }
 
     public function delete($cartProductId)
     {
         ShoppingCartProduct::find($cartProductId)->delete();
-        return redirect()->route('cart.show');
+        return redirect()->route('cart.show')->withErrors(['message' => 'Product removed from your cart successfully :(']);
     }
 }

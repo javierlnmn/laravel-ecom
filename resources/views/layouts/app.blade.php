@@ -38,7 +38,17 @@
         </div>
 
         @if($errors->has('message'))
-            <x-common.message-pop-up-card />
+            <x-common.message-pop-up-card
+                :message="$errors->first('message')"
+            />
+        @endif
+
+        @if(session('success'))
+            <x-common.message-pop-up-card
+                :message="session('success')"
+                additionalClassesBox="!bg-green-500"
+                additionalClassesTimerLine="!bg-green-700"
+            />
         @endif
 
     </body>

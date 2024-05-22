@@ -8,10 +8,6 @@
     font-style: normal;
 }
 
-body {
-    scroll-behavior: smooth !important;
-}
-
 @keyframes disappear-width {
     0% {
         width: 100%;
@@ -22,7 +18,7 @@ body {
 }
 
 .animate-disappear-width {
-    animation: disappear-width 5s forwards;
+    animation: disappear-width 4s forwards;
 }
 
 @keyframes leave-screen {
@@ -34,4 +30,17 @@ body {
 
 .animate-leave-screen {
     animation: leave-screen 1s forwards;
+}
+
+@keyframes enter-screen {
+    0% {
+        transform: translateY(-100vh);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.animate-enter-screen {
+    animation: enter-screen .6s ease-out;
 }
