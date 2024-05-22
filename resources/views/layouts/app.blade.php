@@ -36,5 +36,10 @@
 
             <x-base.footer />
         </div>
+
+        @if($errors->has('message'))
+            <x-common.message-pop-up-card />
+        @endif
+
     </body>
 </html>

@@ -41,14 +41,14 @@ class ShoppingCartController extends Controller
 
         if (!$productStock)
         {
-            return redirect()->back()->withErrors(['message' => 'The product size combination does not exist.'])->withInput();
+            return redirect()->back()->withErrors(['message' => 'There is not enough stock for this size.'])->withInput();
         }
 
         if ($alreadyInChart) {
 
             if ($productStock->quantity < $productUnits + $alreadyInChart->quantity)
             {
-                return redirect()->back()->withErrors(['message' => 'The product size combination does not exist.'])->withInput();
+                return redirect()->back()->withErrors(['message' => 'There is not enough stock for this size.'])->withInput();
             }
 
             $alreadyInChart->quantity += $productUnits;
