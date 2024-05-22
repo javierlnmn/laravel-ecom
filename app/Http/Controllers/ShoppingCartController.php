@@ -27,9 +27,16 @@ class ShoppingCartController extends Controller
         $productUnits = $validatedData['product-units'];
         $productSize = $validatedData['product-size'];
 
+        $userCart = ShoppingCart::firstOrCreate(['user_id' =>  request()->user()->id]);
+
+        $alreadyInChart = ShoppingCartProduct::where('shopping_cart_id', $userCart->id)
+            ->where('product_id', $productId)
+            ->where('size_id', $productSize)
+            ->first();
+
         $productStock = ProductStock::where('product_id', $productId)
             ->where('size_id', $productSize)
-            ->whereColumn('quantity', '>', $productUnits)
+            ->whereColumn('quantity', '>=', $productUnits)
             ->first();
 
         if (!$productStock)
@@ -37,17 +44,26 @@ class ShoppingCartController extends Controller
             return redirect()->back()->withErrors(['message' => 'The product size combination does not exist.'])->withInput();
         }
 
-        $userCart = ShoppingCart::firstOrCreate(['user_id' =>  request()->user()->id]);
+        if ($alreadyInChart) {
 
-        $product = Product::find($productStock->product_id);
+            if ($productStock->quantity < $productUnits + $alreadyInChart->quantity)
+            {
+                return redirect()->back()->withErrors(['message' => 'The product size combination does not exist.'])->withInput();
+            }
 
-        ShoppingCartProduct::create([
-            'shopping_cart_id' => $userCart->id,
-            'product_id' => $product->id,
-            'size_id' => $productSize,
-            'quantity' => $productUnits,
-            'price' => $product->price,
-        ]);
+            $alreadyInChart->quantity += $productUnits;
+            $alreadyInChart->save();
+        } else {
+            $product = Product::find($productStock->product_id);
+
+            ShoppingCartProduct::create([
+                'shopping_cart_id' => $userCart->id,
+                'product_id' => $product->id,
+                'size_id' => $productSize,
+                'quantity' => $productUnits,
+                'price' => $product->price,
+            ]);
+        }
 
         return redirect()->route('cart.show');
     }
