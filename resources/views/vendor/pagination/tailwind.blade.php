@@ -2,21 +2,21 @@
     <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center justify-between">
         <div class="flex justify-between flex-1 sm:hidden">
             @if ($paginator->onFirstPage())
-                <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-zinc-200 bg-zinc-800 cursor-default leading-5">
+                <span class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-zinc-500 bg-zinc-800 cursor-default leading-5">
                     {!! __('pagination.previous') !!}
                 </span>
             @else
-                <a href="{{ $paginator->previousPageUrl() }}" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-zinc-500 bg-zinc-800 leading-5 hover:text-zinc-200 focus:outline-none focus:ring hover:bg-zinc-700 transition-colors">
+                <a href="{{ $paginator->previousPageUrl() }}" class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-zinc-200 bg-zinc-800 leading-5 hover:text-zinc-200 focus:outline-none focus:ring hover:bg-zinc-700 transition-colors">
                     {!! __('pagination.previous') !!}
                 </a>
             @endif
 
             @if ($paginator->hasMorePages())
-                <a href="{{ $paginator->nextPageUrl() }}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-zinc-500 bg-zinc-800 leading-5 hover:text-zinc-200 focus:outline-none focus:ring hover:bg-zinc-700 transition-colors">
+                <a href="{{ $paginator->nextPageUrl() }}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-zinc-200 bg-zinc-800 leading-5 hover:text-zinc-200 focus:outline-none focus:ring hover:bg-zinc-700 transition-colors">
                     {!! __('pagination.next') !!}
                 </a>
             @else
-                <span class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-zinc-200 bg-zinc-800 cursor-default leading-5">
+                <span class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-zinc-500 bg-zinc-800 cursor-default leading-5">
                     {!! __('pagination.next') !!}
                 </span>
             @endif

@@ -5,7 +5,7 @@
         <h1 class="font-extrabold uppercase text-4xl">All of our products</h1>
 
         <form action="{{ route('product.index') }}" method="GET">
-            <div class="flex gap-4 items-center my-4">
+            <div class="flex gap-4 items-center my-4 max-md:flex-col">
                 <x-common.text-input
                     :id="uniqId()"
                     :name="'searchBy'"
@@ -28,7 +28,7 @@
                         </select>
                     </div>
                 </div>
-                <x-common.simple-button :text="'Search'" :additionalClasses="'!py-2 !w-[20%]'" :submitButton="true" />
+                <x-common.simple-button :text="'Search'" :additionalClasses="'md:!py-2 !w-[20%] max-md:!w-full'" :submitButton="true" />
             </div>
         </form>
 
