@@ -29,7 +29,7 @@ class ShoppingCartController extends Controller
 
         $userCart = ShoppingCart::firstOrCreate(['user_id' =>  request()->user()->id]);
 
-        $alreadyInChart = ShoppingCartProduct::where('shopping_cart_id', $userCart->id)
+        $alreadyInCart = ShoppingCartProduct::where('shopping_cart_id', $userCart->id)
             ->where('product_id', $productId)
             ->where('size_id', $productSize)
             ->first();
@@ -44,15 +44,15 @@ class ShoppingCartController extends Controller
             return redirect()->back()->withErrors(['message' => 'There is not enough stock for this size.'])->withInput();
         }
 
-        if ($alreadyInChart) {
+        if ($alreadyInCart) {
 
-            if ($productStock->quantity < $productUnits + $alreadyInChart->quantity)
+            if ($productStock->quantity < $productUnits + $alreadyInCart->quantity)
             {
                 return redirect()->back()->withErrors(['message' => 'There is not enough stock for this size.'])->withInput();
             }
 
-            $alreadyInChart->quantity += $productUnits;
-            $alreadyInChart->save();
+            $alreadyInCart->quantity += $productUnits;
+            $alreadyInCart->save();
         } else {
             $product = Product::find($productStock->product_id);
 

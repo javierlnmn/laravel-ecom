@@ -23,8 +23,8 @@ Route::get('/brands', [BrandController::class, 'index'])->name('brand.index');
 Route::get('/brands/{brandSlug}', [BrandController::class, 'show'])->name('brand.show');
 
 // Shopping Cart
-Route::post('/add-to-cart/{productId}', [ShoppingCartController::class, 'store'])->name('cart.store');
-Route::delete('/remove-from-cart/{cartProductId}', [ShoppingCartController::class, 'delete'])->name('cart.delete');
+Route::middleware('auth')->post('/add-to-cart/{productId}', [ShoppingCartController::class, 'store'])->name('cart.store');
+Route::middleware('auth')->delete('/remove-from-cart/{cartProductId}', [ShoppingCartController::class, 'delete'])->name('cart.delete');
 Route::get('/cart', [ShoppingCartController::class, 'show'])->name('cart.show');
 
 // Profile
