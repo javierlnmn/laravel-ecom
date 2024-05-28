@@ -22,6 +22,9 @@
 }
 
 @keyframes leave-screen {
+    0% {
+        transform: translateY(0);
+    }
     100% {
         transform: translateY(-100vh);
         opacity: 0;
@@ -29,7 +32,7 @@
 }
 
 .animate-leave-screen {
-    animation: leave-screen 1s forwards;
+    animation: leave-screen 1s forwards !important;
 }
 
 @keyframes enter-screen {

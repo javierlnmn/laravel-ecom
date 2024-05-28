@@ -5,7 +5,7 @@
     "
 >
     <div class="
-            flex mx-auto gap-3 max-h-[515px] overflow-scroll w-fit
+            flex mx-auto gap-3 overflow-scroll w-fit max-sm:h-16
             @if(isset($responsive)) flex-col lg:w-[20%] max-lg:flex-row max-lg:h-20 @else flex-row h-20 @endif
         "
         id="images-list-{{ $uniqueId }}"

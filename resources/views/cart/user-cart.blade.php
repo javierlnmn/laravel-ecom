@@ -17,7 +17,7 @@
             <span class="h-[1px] bg-zinc-500/20 w-full mb-4"></span>
             <p class="font-extrabold text-3xl">Total price: {{$userCart->totalPrice()}}<span class="opacity-50 text-xl">$</span></p>
             <p class="opacity-50 text-light">Taxes and shipping calculated at checkout </p>
-            <x-common.simple-button :additionalClasses="'mt-4 w-[200px] max-md:w-full'" :link="''" :text="'Checkout'" />
+            <x-common.simple-button :additionalClasses="'mt-4 w-[200px] max-md:w-full'" :link="route('order.checkout')" :text="'Checkout'" />
         </div>
 
         @else

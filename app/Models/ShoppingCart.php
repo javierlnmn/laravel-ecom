@@ -38,4 +38,9 @@ class ShoppingCart extends Model
         }
     }
 
+    public function emptyCart()
+    {
+        return $this->cartProducts()->delete();
+    }
+
 }
