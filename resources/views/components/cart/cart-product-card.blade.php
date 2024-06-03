@@ -20,7 +20,7 @@
                     <span class="font-extrabold text-xl">{{$cartProduct->product->price}}</span>
                     <span class="font-light text-md text-zinc-500">$</span>
                 </span>
-                <span class="ml-3 font-extrabold text-2xl">{{$cartProduct->product->priceWithDiscount()}}</span><span class="font-light text-md text-zinc-500">$</span>
+                <span class="ml-3 font-extrabold text-2xl">{{$cartProduct->product->formattedPriceWithDiscount()}}</span><span class="font-light text-md text-zinc-500">$</span>
             </div>
         @endif
         <div class="mt-auto max-w-[500px] w-full self-end flex justify-items-end gap-4 items-center max-md:max-w-none max-md:mt-6 max-sm:flex-col">

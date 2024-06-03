@@ -5,7 +5,7 @@
         <h1 class="font-extrabold uppercase text-4xl">Your payment <span class="text-red-600">wasn't completed</span></h1>
         <p class="text-zinc-700 mt-6">Oops! There was an error with your order payment. The items in this order are:</p>
 
-        <div class="grid grid-cols-2 max-md:grid-cols-1 mt-6">
+        <div class="grid grid-cols-2 gap-6 max-md:grid-cols-1 mt-6">
             @foreach ($order->orderProducts as $orderProduct)
                 <x-payments.payment-product-card :orderProduct="$orderProduct" />
             @endforeach

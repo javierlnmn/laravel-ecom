@@ -49,6 +49,10 @@ class StripeController extends Controller
         $totalPrice = 0;
         $lineItems = [];
 
+        if (count($cartProducts) <= 0) {
+            return redirect()->route('cart.show')->withErrors(['message' => 'Please add products to your cart to make an order.']);
+        }
+
         foreach($cartProducts as $cartProduct) {
             $totalPrice += $cartProduct->product->priceWithDiscount();
 
@@ -58,7 +62,7 @@ class StripeController extends Controller
                     'product_data'=> [
                         'name' => $cartProduct->product->name.', size '.$cartProduct->getSizeName(),
                     ],
-                    'unit_amount' => $cartProduct->product->price*100,
+                    'unit_amount' => ($cartProduct->product->priceWithDiscount())*100,
                 ],
                 'quantity' => $cartProduct->quantity,
             ];
@@ -91,7 +95,7 @@ class StripeController extends Controller
             OrderProduct::create([
                 'order_id' => $newOrder->id,
                 'product_id' => $cartProduct->product->id,
-                'price' => $cartProduct->product->price,
+                'price' => $cartProduct->product->priceWithDiscount(),
                 'size_id' => $cartProduct->size_id,
                 'quantity' => $cartProduct->quantity,
             ]);

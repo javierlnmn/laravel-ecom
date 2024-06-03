@@ -46,6 +46,13 @@ class Product extends Model
     public function priceWithDiscount()
     {
         if ($this->discount <= 0) return $this->price;
+        $finalPrice = $this->price - ($this->price * $this->discount / 100);
+        return $finalPrice;
+    }
+
+    public function formattedPriceWithDiscount()
+    {
+        if ($this->discount <= 0) return $this->price;
         $finalPrice = number_format($this->price - ($this->price * $this->discount / 100), 2, '.', ',');
         return $this->formatPrice($finalPrice);
     }

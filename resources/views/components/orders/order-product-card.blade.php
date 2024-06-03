@@ -18,7 +18,7 @@
                     <span class="font-extrabold text-xl">{{$cartProduct->product->price}}</span>
                     <span class="font-light text-md text-zinc-500">$</span>
                 </span>
-                <span class="ml-3 font-extrabold text-2xl">{{$cartProduct->product->priceWithDiscount()}}</span><span class="font-light text-md text-zinc-500">$</span>
+                <span class="ml-3 font-extrabold text-2xl">{{$cartProduct->product->formattedPriceWithDiscount()}}</span><span class="font-light text-md text-zinc-500">$</span>
             </div>
         @endif
         <x-common.rose-link :additionalClasses="'self-end mt-auto'" :link="route('product.show', ['productSlug' => $cartProduct->product->slug])" :text="'See Item'" />

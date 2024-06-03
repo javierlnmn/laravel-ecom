@@ -42,12 +42,16 @@
                             {{ __('Profile') }}
                         </x-breeze.dropdown-link>
 
+                        <x-breeze.dropdown-link :href="route('order.index')">
+                            {{ __('My orders') }}
+                        </x-breeze.dropdown-link>
+
                         <form class="m-0" method="POST" action="{{ route('logout') }}">
                             @csrf
 
                             <x-breeze.dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                    this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-breeze.dropdown-link>
                         </form>

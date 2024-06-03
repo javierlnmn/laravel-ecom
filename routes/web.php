@@ -31,6 +31,8 @@ Route::get('/cart', [ShoppingCartController::class, 'show'])->name('cart.show');
 
 // Orders
 Route::middleware('auth')->get('/checkout', [OrderController::class, 'checkout'])->name('order.checkout');
+Route::middleware('auth')->get('/orders', [OrderController::class, 'index'])->name('order.index');
+Route::middleware('auth')->delete('/orders/destroy/{orderId}', [OrderController::class, 'destroy'])->name('order.destroy');
 
 // Stripe
 Route::middleware('auth')->post('/payment', [StripeController::class, 'payment'])->name('stripe.payment');

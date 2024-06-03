@@ -28,7 +28,7 @@ class ShoppingCart extends Model
 
         foreach ($cartProducts as $cartProduct)
         {
-            $finalPrice += $cartProduct->product->priceWithDiscount() * $cartProduct->quantity;
+            $finalPrice += $cartProduct->product->formattedPriceWithDiscount() * $cartProduct->quantity;
         }
 
         if (floor($finalPrice) == $finalPrice) {

@@ -6,7 +6,7 @@
         <p class="text-zinc-700 mt-6">The provided address is <span class="bg-zinc-300 italic shadow-sm rounded-lg px-2">{{$order->userAddress->getCompleteAddress()}}</span>. Please confirm it is correct or <span class="underline">otherwise contact us</span>.</p>
         <p class="text-zinc-700">We will be sending this products soon:</p>
 
-        <div class="grid grid-cols-2 max-md:grid-cols-1 mt-6">
+        <div class="grid grid-cols-2 gap-6 max-md:grid-cols-1 mt-6">
             @foreach ($order->orderProducts as $orderProduct)
                 <x-payments.payment-product-card :orderProduct="$orderProduct" />
             @endforeach

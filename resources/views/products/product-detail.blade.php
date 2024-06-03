@@ -47,7 +47,7 @@
                             <span class="font-light text-lg text-zinc-500">$</span>
                         </span>
                         @endif
-                        <span class="ml-3 font-extrabold text-4xl">{{$product->priceWithDiscount()}}</span><span class="font-light text-lg text-zinc-500">$</span>
+                        <span class="ml-3 font-extrabold text-4xl">{{$product->formattedPriceWithDiscount()}}</span><span class="font-light text-lg text-zinc-500">$</span>
                     </div>
                     <x-common.simple-button
                         :submitButton="true"

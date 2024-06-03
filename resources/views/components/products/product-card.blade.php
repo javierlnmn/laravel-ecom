@@ -30,7 +30,7 @@
                             <span class="font-extrabold text-xl">{{$product->price}}</span>
                             <span class="font-light text-md text-zinc-500">$</span>
                         </span>
-                        <span class="ml-3 font-extrabold text-2xl">{{$product->priceWithDiscount()}}</span><span class="font-light text-md text-zinc-500">$</span>
+                        <span class="ml-3 font-extrabold text-2xl">{{$product->formattedPriceWithDiscount()}}</span><span class="font-light text-md text-zinc-500">$</span>
                     </div>
                 @endif
             </div>
