@@ -6,29 +6,27 @@
 
         <form action="{{ route('product.index') }}" method="GET">
             <div class="flex gap-4 items-center my-4 max-md:flex-col">
-                <x-common.text-input
-                    :id="uniqId()"
-                    :name="'searchBy'"
-                    :value="request('searchBy')"
-                    :placeholder="'Type something to search by...'"
-                />
                 <div class="w-full">
-                    <div class="w-full h-10 !cursor-pointer rounded-full hover:bg-zinc-300/30 border-zinc-900/50 border-[1px] border-solid grid place-items-center">
-                        <select
-                            class="outline-none !cursor-pointer !ring-0 !focus:outline-none border-none bg-transparent w-full p-0 text-center"
-                            name="orderBy"
-                        >
-                            <option value="" selected disabled>Select an option to order by</option>
-                            <option value="created_at-desc" {{ request('orderBy') == 'created_at-desc' ? 'selected' : '' }}>Latest Products</option>
-                            <option value="created_at-asc" {{ request('orderBy') == 'created_at-asc' ? 'selected' : '' }}>Oldest products</option>
-                            <option value="discount-desc" {{ request('orderBy') == 'discount-desc' ? 'selected' : '' }}>Discount (descending)</option>
-                            <option value="discount-asc" {{ request('orderBy') == 'discount-asc' ? 'selected' : '' }}>Discount (ascending)</option>
-                            <option value="brand_id-desc" {{ request('orderBy') == 'brand_id-desc' ? 'selected' : '' }}>Brand (descending)</option>
-                            <option value="brand_id-asc" {{ request('orderBy') == 'brand_id-asc' ? 'selected' : '' }}>Brand (ascending)</option>
-                        </select>
-                    </div>
+                    <x-breeze.input-label for="search-by" :value="'Type something to search by...'" />
+                    <x-breeze.text-input id="search-by" value="{{request('searchBy')}}" placeholder="Type something to search by..." name="searchBy" type="text" class="mt-1 block w-full disabled:opacity-50" />
                 </div>
-                <x-common.simple-button :text="'Search'" :additionalClasses="'md:!py-2 !w-[20%] max-md:!w-full'" :submitButton="true" />
+                <div class="w-full">
+                    <x-breeze.input-label for="order-by" :value="'Select an option to order by...'" />
+                    <select
+                        class="border-zinc-300 focus:border-rose-500 focus:ring-rose-500 rounded-md shadow-sm mt-1 block w-full cursor-pointer"
+                        name="orderBy"
+                        id="order-by"
+                    >
+                        <option value="" selected disabled>Select an option to order by</option>
+                        <option value="created_at-desc" {{ request('orderBy') == 'created_at-desc' ? 'selected' : '' }}>Latest Products</option>
+                        <option value="created_at-asc" {{ request('orderBy') == 'created_at-asc' ? 'selected' : '' }}>Oldest products</option>
+                        <option value="discount-desc" {{ request('orderBy') == 'discount-desc' ? 'selected' : '' }}>Discount (descending)</option>
+                        <option value="discount-asc" {{ request('orderBy') == 'discount-asc' ? 'selected' : '' }}>Discount (ascending)</option>
+                        <option value="brand_id-desc" {{ request('orderBy') == 'brand_id-desc' ? 'selected' : '' }}>Brand (descending)</option>
+                        <option value="brand_id-asc" {{ request('orderBy') == 'brand_id-asc' ? 'selected' : '' }}>Brand (ascending)</option>
+                    </select>
+                </div>
+                <x-common.simple-button :text="'Search'" :additionalClasses="'md:!py-2 !mt-auto !w-[20%] max-md:!w-full'" :submitButton="true" />
             </div>
         </form>
 

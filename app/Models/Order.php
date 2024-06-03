@@ -14,10 +14,16 @@ class Order extends Model
         'total_price',
         'status',
         'session_id',
+        'user_address_id',
     ];
 
     public function orderProducts()
     {
         return $this->hasMany(OrderProduct::class);
+    }
+
+    public function userAddress()
+    {
+        return $this->belongsTo(UserAddress::class);
     }
 }
